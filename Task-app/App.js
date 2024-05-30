@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image,SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Image,SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function App() {
   return (
@@ -18,6 +19,14 @@ export default function App() {
         </View>
       
       <StatusBar style="auto" />
+    </View>
+    <View style={styles.searchtab}>
+      <TextInput style={styles.search}> <Ionicons name="search" size={24}  />
+      <Text fontSize={16} fontWeight={700}>Search</Text></TextInput>
+      <Image 
+          source={require('./assets/bx_slider.png')}
+          style={styles.slider}
+          />
     </View>
     </SafeAreaView>
     </View>
@@ -56,8 +65,26 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 50,
     backgroundColor:'#fff'
-    
-    
-  },
 
+  },
+  search:{
+    padding: 16,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    margin: 10,
+    flex:3,  
+  },
+  searchtab:{
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: '',
+    padding: 16,
+  },
+  slider:{
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor:'orange',
+    flex:1,
+  }
 });
