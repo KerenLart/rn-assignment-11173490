@@ -3,17 +3,20 @@ import { Image,SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.view}>
+    <View style={styles.Overview}>
       <SafeAreaView style={styles.SafeArea}>
        <View>
-        <View>
-        <Text style={styles.title}>Hello , Devs</Text>
-        <Image 
-          source={require('./assets/icon.png')}
-          style={styles.image}
+        <View style={styles.titlebar}>
+          <View>
+            <Text style={styles.title}>Hello , Devs</Text>
+            <Text>14 tasks today</Text>
+          </View>
+          <Image 
+          source={require('./assets/profile.png')}
+          style={styles.profile}
           />
         </View>
-      <Text>14 tasks today</Text>
+      
       <StatusBar style="auto" />
     </View>
     </SafeAreaView>
@@ -23,7 +26,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  view :{
+  Overview :{
     backgroundColor: '#f7f0e8',
     flex:1,
   },
@@ -38,5 +41,23 @@ const styles = StyleSheet.create({
     //fontFamily:'lato',
     fontWeight:'bold',
     fontSize: 32,
-  }
+  },
+
+  titlebar:{
+    flexDirection: 'row',
+    padding: 16,
+    display: 'flex',
+    justifyContent: 'space-between',
+    
+  },
+
+  profile:{
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    backgroundColor:'#fff'
+    
+    
+  },
+
 });
