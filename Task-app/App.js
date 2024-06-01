@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { FlatList, Image,SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Feather } from '@expo/vector-icons';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
@@ -23,18 +25,21 @@ export default function App() {
       <StatusBar style="auto" />
     </View>
     <View style={styles.searchtab}>
-      <TextInput style={styles.search}> <Ionicons name="search" size={24}  />
-      <Text style={{fontSize:16, fontWeight:700}}>Search</Text></TextInput>
-      <Image 
-          source={require('./assets/bx_slider.png')}
-          style={styles.slider}
-          />
+      <TextInput style={styles.search}> 
+        <Feather name="search" size={24} marginRight={20} />
+        <Text style={{fontSize:18, fontWeight:"bold", paddingLeft:10 }}>Search</Text>
+      </TextInput>
+      <View style={{flex:1, justifyContent: 'center', alignItems: 'center', borderRadius:20, backgroundColor: '#f3775b', padding: 10, marginTop:40,}}>
+        <Feather name='sliders' size={40} color={'#fff'} />
+      </View>
+      
+      
     </View>
     <Text style={{fontSize:20, fontWeight:"bold", marginTop:25}}>Categories</Text>
     <ScrollView horizontal={true} >
       <View style={styles.Categories}>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -42,7 +47,16 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
+          <Text>12 Tasks</Text>
+          <Image 
+            source={require('./assets/ladysitting.png')}
+            style={styles.taskimg}
+            />
+        </View>
+        
+        <View style={styles.task}>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -50,7 +64,7 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -58,7 +72,7 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -66,7 +80,7 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -74,7 +88,7 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -82,15 +96,7 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text>Exercise</Text>
-          <Text>12 Tasks</Text>
-          <Image 
-            source={require('./assets/ladysitting.png')}
-            style={styles.taskimg}
-            />
-        </View>
-        <View style={styles.task}>
-          <Text>Exercise</Text>
+          <Text style={styles.tasktext}>Exercise</Text>
           <Text>12 Tasks</Text>
           <Image 
             source={require('./assets/ladysitting.png')}
@@ -99,7 +105,7 @@ export default function App() {
         </View>
       </View>
     </ScrollView>
-    <Text>Ongoing Tasks</Text>
+    <Text style={{fontWeight:'bold', fontSize:24,marginTop:20}}>Ongoing Tasks</Text>
     <FlatList styles={styles.flatlist}
       data={[
                 { key : "1", text : "Dream Theater" }, 
@@ -113,7 +119,7 @@ export default function App() {
                 { key : "9", text : "Pink Floyd" },
                 { key : "10", text : "Queensryche" }
           ]}
-      renderItem={ ({item}) => <Text>{ item.text }</Text> }
+      renderItem={ ({item}) => <Text style={styles.items}>{ item.text }</Text> }
 />
 
     
@@ -127,6 +133,7 @@ const styles = StyleSheet.create({
   Overview :{
     backgroundColor: '#f7f0e8',
     flex:1,
+    padding: 20,
   },
 
   SafeArea : {
@@ -143,7 +150,6 @@ const styles = StyleSheet.create({
 
   titlebar:{
     flexDirection: 'row',
-    padding: 16,
     display: 'flex',
     justifyContent: 'space-between',
     
@@ -153,15 +159,17 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 50,
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    objectFit: 'cover',
 
   },
   search:{
     padding: 16,
     backgroundColor: '#fff',
     borderRadius: 10,
-    margin: 10,
-    flex:3,  
+    marginRight: 10,
+    flex:5,
+    marginTop:40,  
   },
   searchtab:{
     flexDirection: 'row',
@@ -171,29 +179,51 @@ const styles = StyleSheet.create({
   },
   slider:{
     width: 50,
-    height: 50,
-    borderRadius: 10,
-    backgroundColor:'orange',
-    flex:1,
+    height: 49,
+    borderRadius: 14,
+    backgroundColor:'#f3775b',
+    padding:40,
+    margin: 10,
+    objectFit: 'contain',
   },
 
   task:{
     backgroundColor: '#fff',
     borderRadius: 10,
+    marginRight: 30,
+    padding: 12,
+    width: 186,
+    height: 200,
   },
-
+  tasktext:{
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   taskimg:{
     width:151,
     height:132,
+    objectFit:'contain',
   },
 
   Categories:{
+    marginTop: 20,
     flexDirection: 'row',
-    padding: 16,
     display: 'flex',
     justifyContent: 'space-between',
   },
   flatlist:{
     
-  }
+  },
+
+  items:{
+    padding: 16,
+    margin: 2,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth:1,
+    borderColor:'#E8D1BA',
+    width:354,
+    height: 128,
+    
+  }  
 });
