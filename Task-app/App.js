@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, Image,SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Image,SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Feather } from '@expo/vector-icons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -8,7 +8,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default function App() {
   return (
-    <View style={styles.Overview}>
+    <ScrollView style={styles.Overview}>
       <SafeAreaView style={styles.SafeArea}>
        <View>
         <View style={styles.titlebar}>
@@ -26,12 +26,14 @@ export default function App() {
     </View>
     <View style={styles.searchtab}>
       <TextInput style={styles.search}> 
-        <Feather name="search" size={24} marginRight={20} />
-        <Text style={{fontSize:18, fontWeight:"bold", paddingLeft:10 }}>Search</Text>
+        <Feather name="search" size={24}  />
+        <Text style={{fontSize:18, fontWeight:"bold", paddingLeft:20 }}>Search</Text>
       </TextInput>
-      <View style={{flex:1, justifyContent: 'center', alignItems: 'center', borderRadius:20, backgroundColor: '#f3775b', padding: 10, marginTop:40,}}>
-        <Feather name='sliders' size={40} color={'#fff'} />
-      </View>
+      <TouchableOpacity>  
+        <View style={{flex:1, justifyContent: 'center', alignItems: 'center', borderRadius:20, backgroundColor: '#f3775b', padding: 10, marginTop:40,}}>
+          <Feather name='sliders' size={40} color={'#fff'} style={{transform:[{rotate:'90deg'}]}} />
+        </View>
+      </TouchableOpacity>
       
       
     </View>
@@ -47,10 +49,10 @@ export default function App() {
             />
         </View>
         <View style={styles.task}>
-          <Text style={styles.tasktext}>Exercise</Text>
+          <Text style={styles.tasktext}>Study</Text>
           <Text>12 Tasks</Text>
           <Image 
-            source={require('./assets/ladysitting.png')}
+            source={require('./assets/category1.png')}
             style={styles.taskimg}
             />
         </View>
@@ -106,15 +108,15 @@ export default function App() {
       </View>
     </ScrollView>
     <Text style={{fontWeight:'bold', fontSize:24,marginTop:20}}>Ongoing Tasks</Text>
-    <FlatList styles={styles.flatlist}
+    <FlatList style={styles.flatlist}
       data={[
-                { key : "1", text : "Dream Theater" }, 
-                { key : "2", text : "Enchant" },
-                { key : "3", text : "Fates Warning" }, 
-                { key : "4", text : "Kamelot" },
-                { key : "5", text : "Pyramaze" }, 
-                { key : "6", text : "Rush" },
-                { key : "7", text : "Serenity" }, 
+                { key : "1", text : "Mobile App Development" }, 
+                { key : "2", text : "Web Development" },
+                { key : "3", text : "Push Up" }, 
+                { key : "4", text : "Sit Up" },
+                { key : "5", text : "Paint" }, 
+                { key : "6", text : "Run" },
+                { key : "7", text : "Movie" }, 
                 { key : "8", text : "Shadow Gallery" },
                 { key : "9", text : "Pink Floyd" },
                 { key : "10", text : "Queensryche" }
@@ -124,8 +126,8 @@ export default function App() {
 
     
     </SafeAreaView>
-    </View>
-
+    </ScrollView>
+   
   );
 }
 
@@ -212,18 +214,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   flatlist:{
-    
+    marginTop:20
   },
 
   items:{
     padding: 16,
+    paddingTop:40,
     margin: 2,
     backgroundColor: '#fff',
     borderRadius: 10,
     borderWidth:1,
     borderColor:'#E8D1BA',
-    width:354,
+    width:337,
     height: 128,
-    
+    textAlign:'left',
+    fontWeight:'bold',
+    fontSize:16,
+    fontWeight:'700'
   }  
 });
